@@ -1,0 +1,116 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Resume Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="panel">
+      <div class="topbar">
+        <div>
+          <h1>Interactive Resume Builder</h1>
+          <div class="muted">Fill the form to update live preview</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button id="printBtn" class="btn ghost">Print / Save PDF</button>
+          <button id="clearBtn" class="btn">Clear</button>
+        </div>
+      </div>
+
+      <div class="small muted">Completion</div>
+      <div class="progress" aria-hidden><i id="progressBar"></i></div>
+
+      <form id="resumeForm" class="fade-in" onsubmit="return false;">
+        <div class="row">
+          <div class="col">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your full name" />
+          </div>
+          <div class="col">
+            <label for="title">Title / Role</label>
+            <input id="title" type="text" placeholder="e.g. Frontend Developer" />
+          </div>
+        </div>
+
+        <label for="email">Email / Phone</label>
+        <div class="row">
+          <input id="email" type="email" placeholder="email@example.com" />
+          <input id="phone" type="tel" placeholder="+91 98765 43210" />
+        </div>
+
+        <label for="summary">Profile Summary</label>
+        <textarea id="summary" placeholder="A short professional summary..."></textarea>
+
+        <div style="display:flex;gap:8px;align-items:center">
+          <label style="margin:0">Skills</label>
+          <input id="skillInput" type="text" placeholder="Type skill and press Enter" />
+          <button id="addSkillBtn" class="btn ghost" type="button">Add</button>
+        </div>
+        <div id="skillsArea" class="muted small">No skills yet</div>
+
+        <div style="margin-top:8px">
+          <label>Education</label>
+          <div id="educationList" class="list"></div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button id="addEdu" class="btn" type="button">+ Add Education</button>
+            <button id="clearEdu" class="btn ghost" type="button">Reset Education</button>
+          </div>
+        </div>
+
+        <div style="margin-top:12px">
+          <label>Experience</label>
+          <div id="experienceList" class="list"></div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button id="addExp" class="btn" type="button">+ Add Experience</button>
+            <button id="clearExp" class="btn ghost" type="button">Reset Experience</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="panel preview-wrap">
+      <div class="muted small">Live Preview</div>
+      <div id="printArea" class="resume" aria-live="polite">
+        <header>
+          <div>
+            <div class="name" id="pvName">Your Name</div>
+            <div class="muted contacts" id="pvContacts">Title • email • phone</div>
+          </div>
+          <div style="text-align:right">
+            <div class="muted">Generated</div>
+            <div style="font-size:12px;color:var(--muted)" id="pvDate"></div>
+          </div>
+        </header>
+
+        <section class="section">
+          <h3>Profile</h3>
+          <div id="pvSummary" class="muted">A short professional summary will appear here as you type.</div>
+        </section>
+
+        <section class="section">
+          <h3>Skills</h3>
+          <div id="pvSkills"></div>
+        </section>
+
+        <section class="section">
+          <h3>Education</h3>
+          <div id="pvEducation"></div>
+        </section>
+
+        <section class="section">
+          <h3>Experience</h3>
+          <div id="pvExperience"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
